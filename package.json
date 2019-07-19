@@ -1,0 +1,45 @@
+{
+  "name": "@antv/event-emitter",
+  "version": "0.1.0",
+  "description": "event emitter for antvis.",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:antvis/event-emitter.git"
+  },
+  "scripts": {
+    "build": "rimraf lib && tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "jest": "^23.6.0",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,js}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!src/**/*.{d.ts}"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  }
+}
