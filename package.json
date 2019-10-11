@@ -16,30 +16,22 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.10",
-    "jest": "^23.6.0",
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "jest-electron": "^0.1.7",
     "rimraf": "^2.6.2",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.2"
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
+    "preset": "ts-jest",
+    "runner": "jest-electron/runner",
+    "testEnvironment": "jest-electron/environment",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{ts,js}",
-      "!**/node_modules/**",
-      "!**/vendor/**",
-      "!src/**/*.{d.ts}"
+      "src/**/*.ts",
+      "!**/node_modules/**"
     ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ]
+    "testRegex": "/__tests__/.*spec\\.ts$"
   }
 }
