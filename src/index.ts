@@ -1,11 +1,9 @@
 interface EventType {
-  callback: Function;
-  once: boolean;
+  readonly callback: Function;
+  readonly once: boolean;
 }
 
-interface EventsType {
-  [key: string]: EventType[];
-}
+type EventsType = Record<string, EventType[]>;
 
 /* event-emitter */
 export default class EventEmitter {
