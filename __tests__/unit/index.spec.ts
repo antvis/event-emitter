@@ -48,6 +48,7 @@ describe('EE', () => {
     const fn = () => { count += 1; ee.emit('click') };
 
     ee.once('click', fn);
+    ee.emit('click');
     expect(count).toEqual(1);
 
   });
