@@ -21,7 +21,9 @@ ee.on('mouseover', () => {});
 
 ee.once('click', () => {});
 
-ee.fire('click', 1, 'hello', true);
+ee.on('*', () => {});
+
+ee.emit('click', 1, 'hello', true);
 
 ee.off('click');
 ```

@@ -1,11 +1,11 @@
 interface EventType {
-  callback: Function;
-  once: boolean;
+  readonly callback: Function;
+  readonly once: boolean;
 }
 
-interface EventsType {
-  [key: string]: EventType[];
-}
+type EventsType = Record<string, EventType[]>;
+
+const WILDCARD = '*';
 
 /* event-emitter */
 export default class EventEmitter {
@@ -45,24 +45,31 @@ export default class EventEmitter {
    */
   emit(evt: string, ...args: any[]) {
     const events = this._events[evt] || [];
+    const wildcardEvents = this._events[WILDCARD] || [];
 
-    let length = events.length;
-    for (let i = 0; i < length; i ++) {
-      const { callback, once } = events[i];
+    // 实际的处理 emit 方法
+    const doEmit = (es: EventType[]) => {
+      let length = es.length;
+      for (let i = 0; i < length; i ++) {
+        const { callback, once } = es[i];
 
-      if (once) {
-        events.splice(i, 1);
+        if (once) {
+          es.splice(i, 1);
 
-        if (events.length === 0) {
-          delete this._events[evt];
+          if (es.length === 0) {
+            delete this._events[evt];
+          }
+
+          length --;
+          i --;
         }
 
-        length --;
-        i --;
+        callback.apply(this, args);
       }
+    };
 
-      callback.apply(this, args);
-    }
+    doEmit(events);
+    doEmit(wildcardEvents);
   }
 
   /**
