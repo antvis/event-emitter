@@ -50,7 +50,6 @@ export default class EventEmitter {
     for (let i = 0; i < length; i ++) {
       const { callback, once } = events[i];
 
-      callback.apply(this, args);
       if (once) {
         events.splice(i, 1);
 
@@ -61,6 +60,8 @@ export default class EventEmitter {
         length --;
         i --;
       }
+
+      callback.apply(this, args);
     }
   }
 
