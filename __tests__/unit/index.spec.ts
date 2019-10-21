@@ -41,6 +41,17 @@ describe('EE', () => {
     });
   });
 
+  it('once should breack loop', () => {
+    const ee = new EE();
+    let count = 0;
+
+    const fn = () => { count += 1; ee.emit('click') };
+
+    ee.once('click', fn);
+    expect(count).toEqual(1);
+
+  });
+
   it('emit', () => {
     const ee = new EE();
 
