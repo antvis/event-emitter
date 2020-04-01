@@ -8,7 +8,6 @@ describe('wildcard', () => {
   const fnOnce = jest.fn();
 
   it('on', () => {
-
     ee.on('click', fnOther);
     ee.on('*', fnOn);
 
