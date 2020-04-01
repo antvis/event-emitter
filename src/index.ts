@@ -5,7 +5,7 @@ interface EventType {
 
 type EventsType = Record<string, EventType[]>;
 
-const WILDCARD = "*";
+const WILDCARD = '*';
 
 /* event-emitter */
 export default class EventEmitter {
@@ -23,7 +23,7 @@ export default class EventEmitter {
     }
     this._events[evt].push({
       callback,
-      once: !!once
+      once: !!once,
     });
     return this;
   }
