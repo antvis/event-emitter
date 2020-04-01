@@ -6,11 +6,17 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "lib": [
-      "esnext"
+      "esnext",
+      "dom"
     ]
   },
-  "include": ["src"],
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     "**/node_modules/*"

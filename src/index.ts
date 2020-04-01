@@ -5,7 +5,7 @@ interface EventType {
 
 type EventsType = Record<string, EventType[]>;
 
-const WILDCARD = '*';
+const WILDCARD = "*";
 
 /* event-emitter */
 export default class EventEmitter {
@@ -23,7 +23,7 @@ export default class EventEmitter {
     }
     this._events[evt].push({
       callback,
-      once: !!once,
+      once: !!once
     });
     return this;
   }
@@ -50,7 +50,10 @@ export default class EventEmitter {
     // 实际的处理 emit 方法
     const doEmit = (es: EventType[]) => {
       let length = es.length;
-      for (let i = 0; i < length; i ++) {
+      for (let i = 0; i < length; i++) {
+        if (!es[i]) {
+          continue;
+        }
         const { callback, once } = es[i];
 
         if (once) {
@@ -60,8 +63,8 @@ export default class EventEmitter {
             delete this._events[evt];
           }
 
-          length --;
-          i --;
+          length--;
+          i--;
         }
 
         callback.apply(this, args);
@@ -90,11 +93,11 @@ export default class EventEmitter {
         const events = this._events[evt] || [];
 
         let length = events.length;
-        for (let i = 0; i < length; i ++) {
+        for (let i = 0; i < length; i++) {
           if (events[i].callback === callback) {
             events.splice(i, 1);
-            length --;
-            i --;
+            length--;
+            i--;
           }
         }
 
