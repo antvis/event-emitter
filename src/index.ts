@@ -34,8 +34,7 @@ export default class EventEmitter {
    * @param callback
    */
   once(evt: string, callback: Function) {
-    this.on(evt, callback, true);
-    return this;
+    return this.on(evt, callback, true);
   }
 
   /**
