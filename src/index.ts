@@ -100,7 +100,7 @@ export default class EventEmitter {
           }
         }
 
-        if (events.length === 0) {
+        if (length === 0) {
           delete this._events[evt];
         }
       }
